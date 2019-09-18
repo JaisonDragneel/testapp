@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Testapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'layouts/navigation'%>
+  <div class = "container" >
+    <% if notice %></p>
+      <%= render 'layouts/messages', message: 'success' %>
+    <% elsif alert %></p>
+      <%= render 'layouts/messages', message: 'danger' %>
+    <% end %>
+    <%= yield %>
+  </div>
+  <footer class="container-fluid bg-4 text-center">
+    <p>Posted by: Jaison, copyright<i class="fa fa-copyright" style="font-size:15px"></i> Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
+  </footer>
+</body>
+</html>

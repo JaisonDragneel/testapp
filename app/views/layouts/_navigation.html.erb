@@ -1,0 +1,29 @@
+<nav class="navbar navbar-inverse">
+<div class="container-fluid">
+  <div class="navbar-header">
+    <a class="navbar-brand" href=<%= home_page_index_path %>>Book-Store</a>
+  </div>
+  <ul class="nav navbar-nav">
+    <% if current_user && current_user.admin %>
+      <li><a href= <%= users_path %>>View User</a></li>
+    <% end %>
+    <li><a href=<%= books_path %>>List Books</a></li>
+  </ul>
+  <% if current_user %>
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user.admin %>
+        <li><a  title="Logged in as Admin" data-toggle="popover" data-placement="bottom" data-content=<%= current_user.email %> >View Profile</a></li>
+      <% else %>
+        <li><a  title="Logged in as" data-toggle="popover" data-placement="bottom" data-content=<%= current_user.email %> >View Profile</a></li>
+      <% end %>
+      <li><span class="glyphicon glyphicon-user"></span> <%= link_to 'Edit', edit_user_registration_path %></li>
+      <li><span class="glyphicon glyphicon-user"></span> <%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+    </ul>
+  <% else %>
+    <ul class="nav navbar-nav navbar-right">
+      <li><span class="glyphicon glyphicon-user"></span> <%= link_to 'Sign in', new_user_session_path %></li>
+      <li><span class="glyphicon glyphicon-user"></span> <%= link_to 'Sign up', new_user_registration_path %></li>
+    </ul>
+  <% end %>
+</div>
+</nav>
